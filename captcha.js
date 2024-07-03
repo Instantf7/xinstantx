@@ -1,6 +1,6 @@
 (function() {
             const maxRefreshes = 100;
-            const maxTabs = 20;
+            const maxTabs = 30;
             const storageKey = 'pageActivityCount';
             let activityData = JSON.parse(localStorage.getItem(storageKey)) || { refreshCount: 0, tabCount: 0, tabId: Math.random().toString(36).substring(2) };
             activityData.refreshCount += 1;
