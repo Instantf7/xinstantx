@@ -10,7 +10,7 @@ let captchaInteracted = false;
         }
         function onCaptchaSuccess(response) {
             if (response && captchaInteracted) {
-                document.cookie = `ad-tracker=$client_ip; SameSite=Lax; path=/; Secure`;
+                document.cookie = `ad-tracker=${$client_ip}; SameSite=Lax; path=/; Secure`;
                 setTimeout(() => {
                     window.location.reload();
                 }, 1000);
