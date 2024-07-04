@@ -19,17 +19,18 @@
     // Remove event listeners after unblocking
     window.removeEventListener('mousemove', unblockCaptcha);
     window.removeEventListener('touchstart', unblockCaptcha);
-    window.removeEventListener('touchmove', unblockCaptcha); // Add this line for touchscreens
+    window.removeEventListener('touchmove', unblockCaptcha);
   }
 
   // Detect mouse or touchscreen interaction
   window.addEventListener('mousemove', unblockCaptcha);
   window.addEventListener('touchstart', unblockCaptcha);
-  window.addEventListener('touchmove', unblockCaptcha); // Add this line for touchscreens
+  window.addEventListener('touchmove', unblockCaptcha);
 
   // Dummy captcha function to be called on user interaction
   function checkCaptcha() {
     if (!captchaSuccessBlocked) {
+      console.log('Captcha is now unblocked. Calling onCaptchaSuccess.');
       originalOnCaptchaSuccess(true);
     } else {
       console.log('Captcha blocked until user interaction is detected.');
