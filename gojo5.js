@@ -2,7 +2,7 @@
   // Block the original function call
   let captchaSuccessBlocked = true;
 
-  // Store the original function
+  // Ensure that onCaptchaSuccess is defined
   if (typeof window.onCaptchaSuccess !== 'undefined') {
     const originalOnCaptchaSuccess = window.onCaptchaSuccess;
 
@@ -17,9 +17,9 @@
     };
 
     // Function to unblock the captcha success function
-    function unblockCaptcha() {
+    function unblockCaptcha(event) {
       captchaSuccessBlocked = false;
-      console.log('User interaction detected. Captcha unblocked.');
+      console.log('User interaction detected:', event.type);
       // Remove event listeners after unblocking
       window.removeEventListener('mousemove', unblockCaptcha);
       window.removeEventListener('touchstart', unblockCaptcha);
