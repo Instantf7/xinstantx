@@ -9,6 +9,8 @@
   window.onCaptchaSuccess = function(success) {
     if (!captchaSuccessBlocked) {
       originalOnCaptchaSuccess(success);
+    } else {
+      console.log('Captcha blocked.');
     }
   };
 
@@ -39,4 +41,7 @@
 
   // Expose checkCaptcha function to be called later
   window.checkCaptcha = checkCaptcha;
+
+  // Initial logging for debugging
+  console.log('Script loaded. Waiting for user interaction to unblock captcha.');
 })();
