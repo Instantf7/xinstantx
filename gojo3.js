@@ -8,6 +8,7 @@
   // Override the function to block execution
   window.onCaptchaSuccess = function(success) {
     if (!captchaSuccessBlocked) {
+      console.log('Captcha success unblocked, calling original function.');
       originalOnCaptchaSuccess(success);
     } else {
       console.log('Captcha blocked.');
@@ -22,12 +23,16 @@
     window.removeEventListener('mousemove', unblockCaptcha);
     window.removeEventListener('touchstart', unblockCaptcha);
     window.removeEventListener('touchmove', unblockCaptcha);
+    window.removeEventListener('touchend', unblockCaptcha);
+    window.removeEventListener('touchcancel', unblockCaptcha);
   }
 
   // Detect mouse or touchscreen interaction
   window.addEventListener('mousemove', unblockCaptcha);
   window.addEventListener('touchstart', unblockCaptcha);
   window.addEventListener('touchmove', unblockCaptcha);
+  window.addEventListener('touchend', unblockCaptcha);
+  window.addEventListener('touchcancel', unblockCaptcha);
 
   // Dummy captcha function to be called on user interaction
   function checkCaptcha() {
